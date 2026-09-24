@@ -44,6 +44,11 @@
     .feedback.good { background:var(--green-bg); border:1px solid #a5dfb7; color:#125a39; }
     .feedback.bad { background:var(--red-bg); border:1px solid #f0b9be; color:#85242d; }
     .feedback strong { display:block; margin-bottom:4px; }
+    .feedback p { margin:0; }
+    .feedback details { margin-top:16px; padding-top:14px; border-top:1px solid currentColor; }
+    .feedback summary { cursor:pointer; font-weight:850; }
+    .feedback .developed-answer { display:grid; gap:11px; margin-top:13px; }
+    .feedback .developed-answer p { line-height:1.6; }
     .actions { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:26px; }
     .button { border:0; border-radius:12px; padding:13px 17px; background:var(--navy); color:#fff; font-weight:800; }
     .button:hover, .button:focus-visible { background:#082943; outline:3px solid #9bc9e4; outline-offset:2px; }
@@ -101,6 +106,7 @@
     <footer>Material de práctica basado en el trabajo de Derecho Privado y Comercial.</footer>
   </main>
 
+  <script src="answers.js"></script>
   <script>
     const questions = [
       {topic:"Derecho", q:"¿Cuál es una definición adecuada de Derecho?", a:"El conjunto de reglas coercitivamente impuestas para regir relaciones sociales y alcanzar justicia y fines comunes.", d:["Un conjunto de consejos morales sin sanción.","La opinión de cada persona sobre lo justo.","Solo las costumbres comerciales."], e:"El Derecho regula la convivencia mediante normas y cuenta con posibilidad de coerción."},
@@ -121,7 +127,6 @@
       {topic:"Poder de policía", q:"¿Qué permite el poder de policía estatal?", a:"Reglamentar razonablemente el ejercicio de derechos para proteger el bienestar general.", d:["Eliminar derechos constitucionales sin límites.","Crear sociedades privadas por decreto.","Obligar a contratar sin ley."], e:"En Argentina se admite una concepción amplia, limitada por los arts. 14 y 28 de la Constitución."},
       {topic:"Aplicación de la ley", q:"¿Cuál es la regla temporal del art. 7 del CCyC?", a:"Las leyes se aplican a las consecuencias de relaciones y situaciones existentes, sin efecto retroactivo salvo disposición en contrario.", d:["Toda ley nueva anula automáticamente contratos anteriores.","Las leyes solo rigen para hechos futuros sin excepción.","Una ley nunca entra en vigencia."], e:"La irretroactividad protege situaciones consolidadas, con reglas especiales para normas supletorias y consumo."},
       {topic:"Derecho Comercial", q:"¿Cuál es el eje actual del Derecho Comercial luego de la unificación?", a:"La empresa y la actividad económica organizada, más que el comerciante o acto de comercio aislado.", d:["La eliminación de toda actividad comercial.","El contrato de trabajo exclusivamente.","La propiedad rural sin organización."], e:"El Código unificado desplazó las antiguas categorías, aunque subsisten leyes especiales mercantiles."},
-      {topic:"Derecho Comercial", q:"¿Qué utilidad conservan hoy las categorías de comerciante y acto de comercio?", a:"Valor histórico e interpretativo; el eje actual se desplazó hacia la actividad económica organizada y la empresa.", d:["Son la única base vigente para obligar a llevar contabilidad.","El Código las mantiene exactamente con el régimen anterior.","Impedir que las personas jurídicas lleven contabilidad."], e:"El art. 320 CCyC muestra el cambio: importa la existencia de empresa o actividad económica organizada."},
       {topic:"Empresa", q:"¿Qué expresa el art. 320 del CCyC sobre la actividad económica organizada?", a:"Es un criterio relevante para imponer obligaciones contables.", d:["Elimina la contabilidad de las personas jurídicas.","Convierte a toda persona en comerciante.","Solo aplica al Estado nacional."], e:"El sistema actual usa la empresa o actividad organizada como referencia, no el viejo estatuto del comerciante."},
       {topic:"Empresa", q:"¿Cuál es la relación correcta entre empresa y sociedad?", a:"La empresa es un concepto económico y la sociedad es el marco jurídico que puede organizarla.", d:["Son exactamente el mismo concepto.","Toda empresa debe ser necesariamente una SA.","Una sociedad nunca puede realizar actividad económica."], e:"Puede haber empresa sin sociedad y sociedad sin empresa, según el caso."},
       {topic:"Fondo de comercio", q:"¿Qué integra, en términos generales, un fondo de comercio?", a:"Elementos organizados para la actividad, como instalaciones, mercaderías, nombre, marcas y clientela.", d:["Únicamente el dinero en caja.","Solo los inmuebles de la empresa.","Los bienes personales de todos los empleados."], e:"La Ley 11.867 regula su transferencia y comprende elementos materiales e inmateriales."},
@@ -138,6 +143,7 @@
       {topic:"Persona jurídica", q:"¿Qué establece el art. 141 del CCyC sobre la persona jurídica?", a:"Es un ente al que el ordenamiento confiere aptitud para adquirir derechos y contraer obligaciones.", d:["Es una persona humana con actividad comercial.","Es siempre un organismo estatal.","No puede tener patrimonio propio."], e:"La personalidad permite imputar derechos, obligaciones y patrimonio a una entidad distinta de sus integrantes."},
       {topic:"Personalidad jurídica", q:"¿Qué implica el principio de personalidad diferenciada?", a:"Que la persona jurídica tiene patrimonio, derechos y obligaciones distintos de los de sus miembros.", d:["Que los socios nunca responden en ningún caso.","Que toda deuda social es automáticamente deuda personal del socio.","Que la sociedad no puede contratar."], e:"La separación es la regla, pero puede ser inoponible ante abuso, fraude o violación de la ley."},
       {topic:"Persona jurídica", q:"¿Qué diferencia existe entre domicilio y sede de una persona jurídica?", a:"El domicilio indica su jurisdicción; la sede es la dirección concreta donde funciona o recibe notificaciones.", d:["Son siempre exactamente lo mismo.","El domicilio es solo un correo electrónico.","La sede reemplaza al nombre de la entidad."], e:"Ambos datos sirven para individualizar y ubicar jurídicamente a la entidad."},
+      {topic:"Organizaciones", q:"¿Qué vehículos jurídicos pueden emplearse para organizar una actividad empresaria?", a:"La actuación individual o distintas personas jurídicas, como sociedades, asociaciones, fundaciones, cooperativas y mutuales, según su finalidad.", d:["Solo una sociedad anónima con cotización pública.","Únicamente una asociación civil sin patrimonio.","Ninguna forma jurídica: toda empresa funciona necesariamente de manera informal."], e:"La forma elegida determina si hay personalidad diferenciada, cómo se organiza la entidad y cuál es la relación entre miembros y patrimonio."},
       {topic:"Organizaciones", q:"¿Qué rasgo caracteriza a una asociación civil?", a:"Organiza personas para un interés general, sin lucro como fin principal.", d:["Distribuye utilidades entre sus asociados como finalidad esencial.","Carece necesariamente de toda actividad económica.","No puede tener estatuto."], e:"Puede obtener recursos o desarrollar actividad económica instrumental sin transformarse por ello en sociedad comercial."},
       {topic:"Economía social", q:"¿Qué regla expresa el funcionamiento democrático de una cooperativa?", a:"Un asociado, un voto, cualquiera sea el capital suscripto.", d:["Un voto por cada peso aportado.","Vota únicamente el administrador.","Los proveedores externos deciden por los asociados."], e:"La Ley 20.337 resalta la función de los asociados por sobre la preeminencia del capital."},
       {topic:"Empresa familiar", q:"¿Cuál es un instrumento central para ordenar relaciones en una empresa familiar?", a:"El protocolo familiar, complementado por estatutos, acuerdos o planificación sucesoria.", d:["La eliminación de todos los herederos.","La inscripción como mutual obligatoria.","La renuncia automática a la actividad."], e:"La superposición entre familia, propiedad, gestión y sucesión es una fuente específica de riesgos y conflictos."},
@@ -173,12 +179,48 @@
     const startScreen = $("#startScreen"), quizScreen = $("#quizScreen"), resultScreen = $("#resultScreen");
     const scoreHeader = $("#scoreHeader"), counter = $("#questionCounter"), topicPill = $("#topicPill"), progressFill = $("#progressFill");
     const questionText = $("#questionText"), optionsBox = $("#options"), feedback = $("#feedback"), nextButton = $("#nextButton");
+    const detailedAnswers = Array.isArray(window.detailedAnswers) ? window.detailedAnswers : [];
+    const questionBank = questions.map((question, answerIndex) => ({...question, answerIndex}));
     let session = [], current = 0, score = 0, answered = false;
 
     function shuffle(items) { const copy = [...items]; for (let i = copy.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [copy[i], copy[j]] = [copy[j], copy[i]]; } return copy; }
-    function startQuiz(count) { session = shuffle(questions).slice(0, Number(count)).map(item => ({...item, choices: shuffle([item.a, ...item.d])})); current = 0; score = 0; answered = false; scoreHeader.textContent = `0 / ${session.length}`; startScreen.classList.add("hidden"); resultScreen.classList.add("hidden"); quizScreen.classList.remove("hidden"); renderQuestion(); }
+    function startQuiz(count) { session = shuffle(questionBank).slice(0, Number(count)).map(item => ({...item, choices: shuffle([item.a, ...item.d])})); current = 0; score = 0; answered = false; scoreHeader.textContent = `0 / ${session.length}`; startScreen.classList.add("hidden"); resultScreen.classList.add("hidden"); quizScreen.classList.remove("hidden"); renderQuestion(); }
     function renderQuestion() { const item = session[current]; answered = false; counter.textContent = `Pregunta ${current + 1} de ${session.length}`; topicPill.textContent = item.topic; progressFill.style.width = `${(current / session.length) * 100}%`; questionText.textContent = item.q; optionsBox.innerHTML = ""; feedback.className = "feedback"; feedback.textContent = ""; nextButton.disabled = true; nextButton.textContent = current === session.length - 1 ? "Ver resultado" : "Siguiente pregunta"; item.choices.forEach((choice, index) => { const button = document.createElement("button"); button.className = "option"; button.type = "button"; button.innerHTML = `<span class="letter">${String.fromCharCode(65 + index)}</span><span>${choice}</span>`; button.addEventListener("click", () => chooseAnswer(choice, button)); optionsBox.appendChild(button); }); }
-    function chooseAnswer(choice, selected) { if (answered) return; answered = true; const item = session[current]; const isCorrect = choice === item.a; if (isCorrect) score++; [...optionsBox.children].forEach(button => { button.disabled = true; const label = button.children[1].textContent; if (label === item.a) button.classList.add("correct"); else if (button === selected) button.classList.add("incorrect"); }); feedback.className = `feedback show ${isCorrect ? "good" : "bad"}`; feedback.innerHTML = `<strong>${isCorrect ? "Correcto." : "No es la opción correcta."}</strong>${item.e}`; scoreHeader.textContent = `${score} / ${session.length}`; nextButton.disabled = false; }
+    function chooseAnswer(choice, selected) {
+      if (answered) return;
+      answered = true;
+      const item = session[current];
+      const isCorrect = choice === item.a;
+      if (isCorrect) score++;
+      [...optionsBox.children].forEach(button => {
+        button.disabled = true;
+        const label = button.children[1].textContent;
+        if (label === item.a) button.classList.add("correct");
+        else if (button === selected) button.classList.add("incorrect");
+      });
+      feedback.className = `feedback show ${isCorrect ? "good" : "bad"}`;
+      feedback.replaceChildren();
+      const title = document.createElement("strong");
+      title.textContent = isCorrect ? "Correcto." : "No es la opción correcta.";
+      const explanation = document.createElement("p");
+      explanation.textContent = item.e;
+      const details = document.createElement("details");
+      details.open = true;
+      const summary = document.createElement("summary");
+      summary.textContent = "Respuesta desarrollada para estudiar";
+      const fullAnswer = document.createElement("div");
+      fullAnswer.className = "developed-answer";
+      const paragraphs = detailedAnswers[item.answerIndex] || [item.e];
+      paragraphs.forEach(text => {
+        const paragraph = document.createElement("p");
+        paragraph.textContent = text;
+        fullAnswer.appendChild(paragraph);
+      });
+      details.append(summary, fullAnswer);
+      feedback.append(title, explanation, details);
+      scoreHeader.textContent = `${score} / ${session.length}`;
+      nextButton.disabled = false;
+    }
     function nextQuestion() { if (!answered) return; if (current < session.length - 1) { current++; renderQuestion(); window.scrollTo({top:0, behavior:"smooth"}); } else showResult(); }
     function showResult() { quizScreen.classList.add("hidden"); resultScreen.classList.remove("hidden"); const percent = Math.round((score / session.length) * 100); $("#resultNumber").textContent = `${score} / ${session.length}`; $("#resultTitle").textContent = percent >= 80 ? "Muy buen dominio del tema" : percent >= 60 ? "Buen avance: repasá los temas marcados" : "Conviene repasar y volver a intentar"; $("#resultText").textContent = `Obtuviste ${percent}%. Podés repetir una práctica para que cambien las preguntas y el orden de las opciones.`; progressFill.style.width = "100%"; }
     document.querySelectorAll(".mode").forEach(button => button.addEventListener("click", () => startQuiz(button.dataset.count)));
